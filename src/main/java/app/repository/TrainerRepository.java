@@ -22,6 +22,14 @@ public class TrainerRepository {
         return new ArrayList<>(database.values());
     }
 
+    public Trainer findById(Long id) {
+        return database.get(id);
+    }
+
+    public Trainer findByName(String name) {
+        return database.get(name);
+    }
+
     public void  deleteById(Long id) {
         database.remove(id);
     }

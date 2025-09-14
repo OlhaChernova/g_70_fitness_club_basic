@@ -22,8 +22,12 @@ public class MemberRepository {
         return new ArrayList<>(database.values());
     }
 
-    public Member findById (Long id) {
+    public Member findById(Long id) {
         return database.get(id);
+    }
+
+    public Member findByName(String name) {
+        return database.get(name);
     }
 
     public void deleteById(Long id) {
