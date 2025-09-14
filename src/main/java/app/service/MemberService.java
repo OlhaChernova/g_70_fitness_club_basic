@@ -13,7 +13,7 @@ public class MemberService {
     private final MemberRepository repository = new MemberRepository();
     private static MemberService instance;
 
-    private MemberService() {
+    public MemberService() {
     }
 
     public static MemberService getInstance() {
@@ -37,7 +37,7 @@ public class MemberService {
         return repository.save(member);
     }
 
-    public List<Member> getAllActiveMember() {
+    public List<Member> getAllActiveMembers() {
         return repository.findAll()
                 .stream()
                 .filter(Member::isActive)
@@ -59,7 +59,7 @@ public class MemberService {
     }
 
     public void deleteByName(String name) {
-        getAllActiveMember()
+        getAllActiveMembers()
                 .stream()
                 .filter(x -> x.getName().equals(name))
                 .forEach(x -> x.setActive(false));
@@ -81,5 +81,9 @@ public class MemberService {
         }
         Member member = repository.findByName(name);
         member.setActive(true);
+    }
+
+    public  int getActiveMembersNumber() {
+        return getAllActiveMembers().size();
     }
 }

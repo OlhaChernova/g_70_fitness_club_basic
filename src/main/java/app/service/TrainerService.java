@@ -13,7 +13,7 @@ public class TrainerService {
     private final TrainerRepository repository = new TrainerRepository();
     private static TrainerService instance;
 
-    private TrainerService() {
+    public TrainerService() {
     }
 
     public static TrainerService getInstance() {
@@ -37,7 +37,7 @@ public class TrainerService {
         return repository.save(trainer);
     }
 
-    public List<Trainer> getAllActiveTrainer() {
+    public List<Trainer> getAllActiveTrainers() {
         return repository.findAll()
                 .stream()
                 .filter(Trainer::isActive)
@@ -59,7 +59,7 @@ public class TrainerService {
     }
 
     public void deleteByName(String name) {
-        getAllActiveTrainer()
+        getAllActiveTrainers()
                 .stream()
                 .filter(x -> x.getName().equals(name))
                 .forEach(x -> x.setActive(false));
@@ -81,5 +81,9 @@ public class TrainerService {
         }
         Trainer trainer = repository.findByName(name);
         trainer.setActive(true);
+    }
+
+    public int getActiveTrainersNumber() {
+        return getAllActiveTrainers().size();
     }
 }

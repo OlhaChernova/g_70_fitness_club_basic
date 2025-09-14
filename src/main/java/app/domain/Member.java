@@ -8,6 +8,10 @@ public class Member {
     private String name;
     private boolean active;
 
+    public Member(String name) {
+        this.name = name;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
