@@ -8,6 +8,10 @@ public class Trainer {
     private String name;
     private boolean isActive;
 
+    public Trainer(String name) {
+        this.name = name;
+    }
+
     public boolean isActive() {
         return isActive;
     }
