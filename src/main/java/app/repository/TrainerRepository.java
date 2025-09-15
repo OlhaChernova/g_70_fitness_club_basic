@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class TrainerRepository {
 
-    private final Map< Long, Trainer> database = new HashMap<>();
+    private final Map<Long, Trainer> database = new HashMap<>();
     private long maxId;
 
     public Trainer save(Trainer trainer) {
@@ -27,10 +27,14 @@ public class TrainerRepository {
     }
 
     public Trainer findByName(String name) {
-        return database.get(name);
+        return database.values()
+                .stream()
+                .filter(x -> x.getName().equals(name))
+                .findFirst()
+                .orElse(null);
     }
 
-    public void  deleteById(Long id) {
+    public void deleteById(Long id) {
         database.remove(id);
     }
 }
