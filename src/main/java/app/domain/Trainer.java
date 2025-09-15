@@ -24,10 +24,6 @@ public class Trainer {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void setActive(boolean active) {
         isActive = active;
     }
@@ -46,10 +42,7 @@ public class Trainer {
 
     @Override
     public String toString() {
-        return "Trainer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", active=" + isActive +
-                '}';
+        return String.format("Trainer: id - %d, name - %s, active - %s",
+                id, name, isActive ? "yes" : "no");
     }
 }

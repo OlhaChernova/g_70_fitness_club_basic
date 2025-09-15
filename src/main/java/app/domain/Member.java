@@ -16,16 +16,8 @@ public class Member {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void setActive(boolean active) {
         this.active = active;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getName() {
@@ -50,10 +42,8 @@ public class Member {
 
     @Override
     public String toString() {
-        return "Member{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", active=" + active +
-                '}';
+        return String.format(
+                "Member: id - %d, name - %s, active - %s",
+                id, name, active ? "yes" : "no");
     }
 }
